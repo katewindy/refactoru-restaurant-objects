@@ -36,11 +36,6 @@ var cookie = new FoodItem('cookie', 5000, false, false, false);
 var burger = new FoodItem('burger', 200, true, true, true);
 var fries = new FoodItem('fries', 40, false, true, true);
 
-// console.log(cookie);
-
-// console.log(cookie.toString());
-// console.log(burger.toString());
-// console.log(fries.toString());
 
 var Drink = function(name, description, price, ingredients) {
 	this.name = name;
@@ -50,6 +45,36 @@ var Drink = function(name, description, price, ingredients) {
 
 	Drink.prototype.toString = function () {
 		return 'This drink is a ' + this.name + '.  It is described as: ' + this.description + '. It costs $' + this.price + '. It contains ' + this.ingredients + '.';
+	};
+
+	Drink.prototype.isVegan = function () {
+		for (var i = 0; i < this.ingredients.length; i++){
+			if (this.ingredients[i].vegan !== true){
+				return false;
+			};
+		};
+		return true;
+
+	};
+
+	Drink.prototype.isGlutenFree = function () {
+	for (var i = 0; i < this.ingredients.length; i++){
+		if (this.ingredients[i].glutenFree !== true){
+			return false;
+		};
+	};
+	return true;
+
+	};
+
+	Drink.prototype.isCitrusFree = function () {
+		for (var i = 0; i < this.ingredients.length; i++){
+			if (this.ingredients[i].isCitrusFree !== true){
+				return false;
+			};
+		};
+		return true;
+
 	};
 };
 
@@ -62,12 +87,41 @@ var Plate = function(name, description, price, ingredients) {
 	Plate.prototype.toString = function () {
 		return 'This plate is a ' + this.name + '.  It is described as: ' + this.description + '. It costs $' + this.price + '. It contains ' + this.ingredients + '.';
 	};
+
+	Plate.prototype.isVegan = function () {
+		for (var i = 0; i < this.ingredients.length; i++){
+			if (this.ingredients[i].vegan !== true){
+				return false;
+			};
+		};
+		return true;
+
+	};
+
+	Plate.prototype.isGlutenFree = function () {
+		for (var i = 0; i < this.ingredients.length; i++){
+			if (this.ingredients[i].glutenFree !== true){
+				return false;
+			};
+		};
+		return true;
+
+	};
+
+	Plate.prototype.isCitrusFree = function () {
+		for (var i = 0; i < this.ingredients.length; i++){
+			if (this.ingredients[i].isCitrusFree !== true){
+				return false;
+			};
+		};
+		return true;
+
+	};
 };
 
 var Order = function(plates) {
 	this.plates = plates;
 
-	// Order.prototype.toString = 
 };
 
 var Menu = function(plates) {
@@ -78,7 +132,9 @@ var Menu = function(plates) {
 		for (var i = 0; i < this.plates.length; i++){
 			ingredientName.push(this.plates[i].name);
 		}
-		var menuString = 
+		console.log(ingredientName);
+		var menuString = "Plates offered: " + ingredientName;
+		console.log(menuString);
 	};
 };
 
@@ -86,6 +142,38 @@ var Restaurant = function (name, description, menu){
 	this.name = name;
 	this.description = description;
 	this.menu = menu;
+
+	Restaurant.prototype.toString = function () {
+		// if (this.vegan) {
+		// 	var vegan = 'is';
+		// }
+		// else {
+		// 	var vegan = 'is not';
+		// }
+		// if (this.glutenFree) {
+		// 	var glutenFree = 'is';
+		// }
+		// else {
+		// 	var glutenFree = 'is not';
+		// }
+		// if (this.citrusFree) {
+		// 	var citrusFree = 'is';
+		// }
+		// else {
+		// 	var citrusFree = 'is not';
+		// }
+		// 
+		// 
+		var plateNames = '\n';
+		for (var i = 0; i < this.menu.plates.length; i++){
+			plateNames = plateNames + this.menu.plates[i].name + '\n';
+		}
+		
+		return 'Welcome to ' + this.name + '.  The available plates are: ' + plateNames
+	};
+	
+
+
 };
 
 var Customer = function(dietaryPreference) {
