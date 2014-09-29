@@ -1,0 +1,43 @@
+
+html {
+	box-sizing: border-box;
+
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+.container {
+	width: 80%;
+	margin: auto;
+	background: peachpuff;
+	height: 600px;
+}
+
+.header {
+	width: 100%;
+	
+	text-align: center;
+	padding: 20px;
+}
+
+.restaurantName {
+	font-size: 3em;
+}
+
+.menucontainer {
+	display: inline-block;
+	width:69%;
+	height:600px;
+	background: cornflowerblue;
+	padding: 10px;
+}
+
+.ordercontainer {
+	display: inline-block;
+	width: 30%;
+	height: 600px;
+	background: red;
+	padding: 10px;
+}
